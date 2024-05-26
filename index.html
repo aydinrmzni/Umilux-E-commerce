@@ -1492,6 +1492,7 @@
                         <span class="list-slider__current-price">$25.00</span>
                         <span class="list-slider__old-price">$50.00</span>
                       </div>
+                      <div class="lis"></div>
                     </div>
                   </div>
                   <!-- If we need pagination -->
@@ -1573,35 +1574,6 @@
         </div>
       </footer>
     </main>
-
-    <!-- ? custom scripts -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var elms = document.getElementsByClassName('splide');
-
-        for (var i = 0; i < elms.length; i++) {
-          new Splide(elms[i], {
-            autoWidth: true,
-            autoHeight: true,
-            autoplay: true,
-            interval: (number = 3000),
-            pauseOnHover: (boolean = true),
-            resetProgress: true,
-            arrows: false,
-            pagination: false,
-            flickPower: (number = 400),
-            flickMaxPages: (number = 1),
-            width: '100%',
-            type: 'loop',
-            drag: 'free',
-            snap: true,
-            perPage: 1,
-            speed: (number = 400),
-            rewind: false,
-            wheel: (boolean = false),
-          }).mount();
-        }
-      });
-    </script>
+    <script type="module" src="./scripts/mian.js"></script>
   </body>
 </html>
