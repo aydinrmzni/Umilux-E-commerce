@@ -4,7 +4,12 @@ import {getCategorieById} from './categorie.js';
 import {getProductImageById} from './image.js';
 import {getProductReviewById} from './review.js';
 import {getProductTagById} from './tag.js';
+import {getAvgRating, getDiscountPercent} from '../utils/math.js';
+import {productHTML} from '../utils/productHTML.js';
 
+const listSliderItemsElm = document.querySelector('.js-list-slider__items');
+
+/* Products JSON */
 const Product = [
   {
     id: '1a9f33bb-75d4-4bda-b9d0-3fb1f98e9b02',
@@ -16,8 +21,8 @@ const Product = [
     brandIds: [1],
     availability: true,
     trending: true,
-    imageIds: [3, 4, 5],
-    reviewIds: [2, 3],
+    imageIds: [0, 1], // Images for this product
+    reviewIds: [0, 1, 2, 3],
     tagIds: [2, 3],
     weight: 1.2,
     dimensions: {
@@ -47,6 +52,7 @@ const Product = [
         values: ['6.8 inches'],
       },
     ],
+    discounted: false,
   },
   {
     id: '3d84c635-cf49-4d8e-9069-2f4b432c0b5b',
@@ -58,8 +64,8 @@ const Product = [
     brandIds: [2],
     availability: false,
     trending: false,
-    imageIds: [6, 7, 8],
-    reviewIds: [4, 5],
+    imageIds: [2, 3], // Images for this product
+    reviewIds: [4, 5, 6, 7],
     tagIds: [4, 5],
     weight: 1.1,
     dimensions: {
@@ -89,6 +95,7 @@ const Product = [
         values: ['6.7 inches'],
       },
     ],
+    discounted: true,
   },
   {
     id: '4a55d46c-1c34-4bd7-bf6d-7f67a5f2a915',
@@ -100,8 +107,8 @@ const Product = [
     brandIds: [3],
     availability: true,
     trending: true,
-    imageIds: [9, 10, 11],
-    reviewIds: [6, 7],
+    imageIds: [4, 5], // Images for this product
+    reviewIds: [8, 9, 10, 11],
     tagIds: [6, 7],
     weight: 1.0,
     dimensions: {
@@ -131,6 +138,7 @@ const Product = [
         values: ['6.7 inches'],
       },
     ],
+    discounted: true,
   },
   {
     id: '7b36c68a-0f35-4e5e-bd6a-3a8f7f3c6957',
@@ -142,8 +150,8 @@ const Product = [
     brandIds: [4],
     availability: true,
     trending: false,
-    imageIds: [12, 13, 14],
-    reviewIds: [8, 9],
+    imageIds: [6, 7], // Images for this product
+    reviewIds: [12, 13, 14, 15],
     tagIds: [8, 9],
     weight: 0.9,
     dimensions: {
@@ -173,6 +181,7 @@ const Product = [
         values: ['6.1 inches'],
       },
     ],
+    discounted: true,
   },
   {
     id: '9d02b56d-2fa1-4e4a-94d5-647a23a6f5a7',
@@ -184,8 +193,8 @@ const Product = [
     brandIds: [5],
     availability: true,
     trending: true,
-    imageIds: [15, 16, 17],
-    reviewIds: [10, 11],
+    imageIds: [8, 9], // Images for this product
+    reviewIds: [16, 17, 18, 19],
     tagIds: [10, 11],
     weight: 1.3,
     dimensions: {
@@ -215,6 +224,7 @@ const Product = [
         values: ['6.81 inches'],
       },
     ],
+    discounted: true,
   },
   {
     id: 'b1f44c7a-41c6-4dcd-a6e4-d587a93d2a9a',
@@ -226,8 +236,8 @@ const Product = [
     brandIds: [6],
     availability: false,
     trending: false,
-    imageIds: [18, 19, 20],
-    reviewIds: [12, 13],
+    imageIds: [10, 11], // Images for this product
+    reviewIds: [20, 21, 22, 23],
     tagIds: [12, 13],
     weight: 1.0,
     dimensions: {
@@ -257,6 +267,7 @@ const Product = [
         values: ['6.67 inches'],
       },
     ],
+    discounted: true,
   },
   {
     id: 'd3e6f78a-65d3-4e6e-96c8-4f75e5c8f7e8',
@@ -268,14 +279,14 @@ const Product = [
     brandIds: [7],
     availability: false,
     trending: true,
-    imageIds: [24, 25, 26],
-    reviewIds: [16, 17],
+    imageIds: [12, 13], // Images for this product
+    reviewIds: [24, 25, 26, 27],
     tagIds: [16, 17],
     weight: 1.2,
     dimensions: {
       length: 14,
       width: 7,
-      height: 2.4,
+      height: 2,
     },
     attributes: [
       {
@@ -299,24 +310,68 @@ const Product = [
         values: ['6.58 inches'],
       },
     ],
+    discounted: true,
   },
   {
-    id: 'e4f7989b-70d2-44f1-8e9f-5f87e5f8d9f9',
-    name: 'Asus ROG Phone 5 128GB Phantom Black - Unlocked',
-    description: 'Description of Asus ROG Phone 5 128GB Phantom Black - Unlocked',
-    priceCents: 95000,
-    discountedPriceCents: 90000,
+    id: 'e7e3f896-0c95-4b9b-95d3-6b9c8f8c7e7e',
+    name: 'Oppo Find X3 Pro 256GB Gloss Black - Unlocked',
+    description: 'Description of Oppo Find X3 Pro 256GB Gloss Black - Unlocked',
+    priceCents: 110000,
+    discountedPriceCents: 100000,
     categoryIds: [10],
     brandIds: [8],
     availability: true,
-    trending: true,
-    imageIds: [27, 28, 29],
-    reviewIds: [18, 19],
+    trending: false,
+    imageIds: [14, 15], // Images for this product
+    reviewIds: [28, 29, 30, 31],
     tagIds: [18, 19],
+    weight: 1.2,
+    dimensions: {
+      length: 14,
+      width: 7.5,
+      height: 2.3,
+    },
+    attributes: [
+      {
+        attributeId: 0,
+        values: ['Gloss Black'],
+      },
+      {
+        attributeId: 1,
+        values: ['256GB'],
+      },
+      {
+        attributeId: 2,
+        values: ['12GB'],
+      },
+      {
+        attributeId: 3,
+        values: ['4500mAh'],
+      },
+      {
+        attributeId: 4,
+        values: ['6.7 inches'],
+      },
+    ],
+    discounted: true,
+  },
+  {
+    id: 'f0e5d69b-2d89-4cdd-88d3-5f5c3c8f8e8f',
+    name: 'Asus ROG Phone 5 128GB Phantom Black - Unlocked',
+    description: 'Description of Asus ROG Phone 5 128GB Phantom Black - Unlocked',
+    priceCents: 130000,
+    discountedPriceCents: 120000,
+    categoryIds: [11],
+    brandIds: [9],
+    availability: true,
+    trending: true,
+    imageIds: [16, 17], // Images for this product
+    reviewIds: [32, 33, 34, 35],
+    tagIds: [20, 21],
     weight: 1.3,
     dimensions: {
-      length: 15,
-      width: 9,
+      length: 17,
+      width: 8,
       height: 2.5,
     },
     attributes: [
@@ -341,66 +396,25 @@ const Product = [
         values: ['6.78 inches'],
       },
     ],
+    discounted: true,
   },
   {
-    id: 'f5a8798c-3f9e-4f4f-9a9f-6f8a8f8b8f9a',
-    name: 'Motorola Edge Plus 5G 256GB Thunder Grey - Unlocked',
-    description: 'Description of Motorola Edge Plus 5G 256GB Thunder Grey - Unlocked',
-    priceCents: 80000,
-    discountedPriceCents: 75000,
-    categoryIds: [11],
-    brandIds: [9],
-    availability: false,
-    trending: false,
-    imageIds: [30, 31, 32],
-    reviewIds: [20, 21],
-    tagIds: [20, 21],
-    weight: 1.2,
-    dimensions: {
-      length: 14,
-      width: 7.5,
-      height: 2.3,
-    },
-    attributes: [
-      {
-        attributeId: 0,
-        values: ['Thunder Grey'],
-      },
-      {
-        attributeId: 1,
-        values: ['256GB'],
-      },
-      {
-        attributeId: 2,
-        values: ['12GB'],
-      },
-      {
-        attributeId: 3,
-        values: ['5000mAh'],
-      },
-      {
-        attributeId: 4,
-        values: ['6.7 inches'],
-      },
-    ],
-  },
-  {
-    id: 'g6b7f89d-5f3e-4d4e-8a6d-7c9e8f9a0b6c',
+    id: 'a6c2e77d-4a97-4c2d-85d3-8e8e9f9e8e8e',
     name: 'LG V60 ThinQ 5G 128GB Classy Blue - Unlocked',
     description: 'Description of LG V60 ThinQ 5G 128GB Classy Blue - Unlocked',
-    priceCents: 70000,
-    discountedPriceCents: 65000,
+    priceCents: 90000,
+    discountedPriceCents: 85000,
     categoryIds: [12],
     brandIds: [10],
-    availability: true,
+    availability: false,
     trending: false,
-    imageIds: [33, 34, 35],
-    reviewIds: [22, 23],
+    imageIds: [18, 19], // Images for this product
+    reviewIds: [36, 37, 38, 39],
     tagIds: [22, 23],
     weight: 1.1,
     dimensions: {
-      length: 14,
-      width: 8,
+      length: 16,
+      width: 8.5,
       height: 2.4,
     },
     attributes: [
@@ -425,6 +439,7 @@ const Product = [
         values: ['6.8 inches'],
       },
     ],
+    discounted: true,
   },
 ];
 
@@ -437,16 +452,51 @@ const getProductById = (id) => {
     matchingReviews = [],
     matchingAttributes = [],
     matchingTags = [];
+
+  /* Finds the product */
   Product.forEach((product) => {
     if (product.id === id) matchingProduct = product;
   });
+  
   matchingCategories = getCategorieById(matchingProduct.categoryIds);
   matchingBrands = getBrandById(matchingProduct.brandIds);
   matchingImages = getProductImageById(matchingProduct.imageIds);
   matchingReviews = getProductReviewById(matchingProduct.reviewIds);
   matchingAttributes = getProdcutAttributes(matchingProduct.attributes);
   matchingTags = getProductTagById(matchingProduct.tagIds);
+
+  /* Return the product details in a object */
   return {product: matchingProduct, categories: matchingCategories, brands: matchingBrands, images: matchingImages, reviews: matchingReviews, attributes: matchingAttributes, tags: matchingTags};
 };
 
-console.log(getProductById('1a9f33bb-75d4-4bda-b9d0-3fb1f98e9b02'));
+/* Display the products in Homepage */
+const renderProducts = (Product) => {
+  let trendingProductsHTML = '';
+
+  /* Iterate throught the Products */
+  Product.forEach((product) => {
+    let productStarsHTML = ''; /* Stores the product rating stars element */
+    const productDetails = getProductById(product.id); /* Gets the product details */
+    const discountPercent = getDiscountPercent(product.priceCents, product.discountedPriceCents); /* Get discount percent */
+    const avgRating = getAvgRating(productDetails.reviews); /* Get the avrage product rate */
+
+    /* Store the fill stars icon */
+    for (let i = 0; i < avgRating; i++) {
+      productStarsHTML += '<i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>';
+    }
+
+    /* Store the empty stars icon */
+    for (let i = 0; i < 5 - avgRating; i++) {
+      productStarsHTML += '<i class="list-slider__star fa-solid fa-star"></i>';
+    }
+
+    /* Saves the product if its trending */
+    product.trending && (trendingProductsHTML += productHTML(product, productDetails, productStarsHTML, discountPercent));
+  });
+
+  /* Display the trending products */
+  listSliderItemsElm.innerHTML = trendingProductsHTML;
+};
+
+/* display products on load */
+renderProducts(Product);
