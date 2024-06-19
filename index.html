@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Umilux</title>
     <script src="./plugin/splide-4.1.3/dist/js/splide.min.js"></script>
-    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/main.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- ? cart -->
-    <div class="cartpop d-flex flex-dir-column">
+    <div class="cartpop d-flex flex-dir-column cartpop-js">
       <h1 class="cartpop__heading cartpop__heading-js mb-2">Shoping Cart</h1>
       <div class="cartpop__content d-flex flex-dir-column justify-content-space-between">
         <div class="cartpop__items cartpop__items-js d-flex flex-dir-column gap-2">
@@ -35,7 +35,6 @@
         </div>
       </div>
     </div>
-    <div class="overlay"></div>
     <header class="header mb-2">
       <!-- ? header__top -->
       <section class="container header__top">
@@ -1129,6 +1128,7 @@
           </div>
         </div>
       </footer>
+      <div class="overlay"></div>
     </main>
     <script type="module" src="./scripts/mian.js"></script>
   </body>
