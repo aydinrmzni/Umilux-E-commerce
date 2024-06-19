@@ -15,8 +15,10 @@ export const productHTML = (product, productDetails, productStarsHTML, discountP
           <li class="hovering-menu__item d-flex justify-content-center align-items-center">
             <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
           </li>
-          <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-            <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
+          <li data-id="${product.id}" class="hovering-menu__item d-flex justify-content-center align-items-center add-to-cart-js">
+            <span class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100" style="pointer-events: none;">
+              <i style="pointer-events: none;" class="fa-regular fa-square-plus"></i>
+            </span>
           </li>
         </ul>
       </div>

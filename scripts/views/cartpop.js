@@ -4,12 +4,22 @@ const ovelayElm = document.querySelector('.overlay'); /* Overlay element */
 
 cartButtonElm &&
   cartButtonElm.addEventListener('click', (e) => {
-    ovelayElm.classList.toggle('show');
-    cartPopElm.classList.toggle('show');
+    toggleShowCart();
   });
 
 ovelayElm &&
   ovelayElm.addEventListener('click', (e) => {
-    cartPopElm.classList.toggle('show');
-    ovelayElm.classList.toggle('show');
+    toggleShowCart();
   });
+
+export function toggleOverlay() {
+  ovelayElm.classList.toggle('show');
+}
+export function toggleCartpop() {
+  cartPopElm.classList.toggle('show');
+}
+
+export function toggleShowCart() {
+  toggleCartpop();
+  toggleOverlay();
+}

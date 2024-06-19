@@ -6,6 +6,7 @@ import {getProductReviewById} from './review.js';
 import {getProductTagById} from './tag.js';
 import {getAvgRating, getDiscountPercent} from '../utils/math.js';
 import {productHTML} from '../utils/productHTML.js';
+import {Cart} from './cart.js';
 
 const listSliderItemsElm = document.querySelector('.js-list-slider__items');
 
@@ -500,3 +501,10 @@ const renderProducts = (Product) => {
 
 /* display products on load */
 renderProducts(Product);
+
+// addToCartElm &&
+//   addToCartElm.forEach((elm) => {
+//     elm.addEventListener('click', (e) => {
+
+//     });
+//   });

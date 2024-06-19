@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     new Splide(elms[i], {
       autoWidth: true,
       autoHeight: true,
-      autoplay: true,
+      autoplay: false,
       interval: 3000,
       pauseOnHover: true,
       resetProgress: true,
