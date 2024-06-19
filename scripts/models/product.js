@@ -457,7 +457,7 @@ const getProductById = (id) => {
   Product.forEach((product) => {
     if (product.id === id) matchingProduct = product;
   });
-  
+
   matchingCategories = getCategorieById(matchingProduct.categoryIds);
   matchingBrands = getBrandById(matchingProduct.brandIds);
   matchingImages = getProductImageById(matchingProduct.imageIds);

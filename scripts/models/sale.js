@@ -1,4 +1,4 @@
-const Sale = [
+export const Sale = [
   {
     saleId: 0,
     productId: '1a9f33bb-75d4-4bda-b9d0-3fb1f98e9b02',

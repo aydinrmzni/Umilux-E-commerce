@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Umilux</title>
     <script src="./plugin/splide-4.1.3/dist/js/splide.min.js"></script>
-    <link rel="stylesheet" href="./style/main.min.css" />
+    <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +13,29 @@
     <link rel="stylesheet" href="./plugin/splide-4.1.3/dist/css/splide-core.min.css" />
   </head>
   <body>
+    <!-- ? cart -->
+    <div class="cartpop d-flex flex-dir-column">
+      <h1 class="cartpop__heading cartpop__heading-js mb-2">Shoping Cart</h1>
+      <div class="cartpop__content d-flex flex-dir-column justify-content-space-between">
+        <div class="cartpop__items cartpop__items-js d-flex flex-dir-column gap-2">
+          <div class="cartpop__item d-flex gap-1">
+            <div class="cartpop__image-wraper d-flex"><img src="./image/product/product1/1.webp" alt="" srcset="" class="cartpop__image" /></div>
+            <div class="cartpop__details d-flex flex-dir-column justify-content-space-between">
+              <span class="cartpop__name">Apple Watch Aluminum Case - Pride Edition Apple Watch Aluminum Case - Pride Edition Apple Watch Aluminum Case - Pride Edition</span>
+              <div class="d-flex justify-content-flex-start"><span class="cartpop__price">$150.00</span><span class="cartpop__quantity">[1]</span></div>
+            </div>
+            <div class="cartpop__modify">
+              <i class="fa fa-trash cartpop__remove-js"></i>
+            </div>
+          </div>
+        </div>
+        <div class="cartpop__buttons d-flex flex-dir-column gap-1">
+          <a href="" class="cartpop__checkout-button">Checkout</a>
+          <a href="" class="cartpop__cart-button">See Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
     <header class="header mb-2">
       <!-- ? header__top -->
       <section class="container header__top">
@@ -49,8 +72,8 @@
                 </div>
               </a>
             </div>
-            <div class="header__cart header__box-icon d-flex justify-content-center align-items-center">
-              <a href="" class="header__box-icon-link d-flex justify-content-center align-items-center">
+            <div class="header__cart header__box-icon d-flex justify-content-center align-items-center js-cart-button">
+              <a href="javascript:;" class="header__box-icon-link d-flex justify-content-center align-items-center">
                 <div class="header__box-icon-wraper d-flex align-items-center">
                   <span class="header__box-icon-cart-quantity d-flex justify-content-center align-items-center js-cart-quantity">0</span>
                   <img src="./image/icon/header/cart.svg" alt="" srcset="" />
@@ -242,426 +265,7 @@
             <div class="splide d-flex justify-content-flex-start">
               <div class="list-slider__content splide__track d-flex justify-content-space-between align-items-flex-start w-100">
                 <div class="list-slider__items splide__list swiper d-flex justify-content-space-between align-items-flex-start w-100 js-list-slider__items">
-                  <!-- <div class="list-slider__item list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product1/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product1/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product2/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product2/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product3/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product3/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product4/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product4/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product5/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product5/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product1/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product1/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product2/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product2/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product3/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product3/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product4/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product4/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-slider__item list-slider__item--discounted list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
-                    <div class="list-slider__amazing d-flex justify-content-center align-items-center">
-                      <span class="list-slider__amazing-btn-txt">Unlock Offer</span>
-                      <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div class="hovering-menu">
-                      <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-heart"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-clone"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
-                        </li>
-                        <li class="hovering-menu__item d-flex justify-content-center align-items-center">
-                          <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-square-plus"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="list-slider__discount-percent">-50%</div>
-                    <div class="list-slider__thumbnail-wraper w-100">
-                      <img src="image/product/product5/1.webp" alt="" srcset="" class="list-slider__thumbnail-front" />
-                      <img src="image/product/product5/2.webp" alt="" srcset="" class="list-slider__thumbnail-back" />
-                    </div>
-                    <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
-                      <a href="" class="list-slider__item-category d-block w-100">Umino</a>
-                      <h3 class="list-slider__item-title">Apple iPhone 13 Mini 5G 128GB Pink - Unlocked</h3>
-                      <div class="list-slider__rating">
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                        <i class="list-slider__star fa-solid fa-star"></i>
-                      </div>
-                      <div class="list-slider__price-wraper">
-                        <span class="list-slider__current-price">$25.00</span>
-                        <span class="list-slider__old-price">$50.00</span>
-                      </div>
-                    </div>
-                  </div> -->
+                  <!-- ? Handdle by js -->
                 </div>
               </div>
             </div>
