@@ -445,7 +445,7 @@ const Product = [
 ];
 
 /* get product by id and return */
-const getProductById = (id) => {
+export const getProductById = (id) => {
   let matchingProduct;
   let matchingCategories = [],
     matchingBrands = [],

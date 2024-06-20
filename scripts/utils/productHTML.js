@@ -32,8 +32,8 @@ export const productHTML = (product, productDetails, productStarsHTML, discountP
         <h3 class="list-slider__item-title">${product.name}</h3>
         <div class="list-slider__rating">${productStarsHTML}</div>
         <div class="list-slider__price-wraper">
-          <span class="list-slider__current-price">$${centToDollar(product.discountedPriceCents)}</span>
-          <span class="list-slider__old-price">$${centToDollar(product.priceCents)}</span>
+          <span class="list-slider__current-price">$${product.discounted ? centToDollar(product.discountedPriceCents) : centToDollar(product.priceCents)}</span>
+          <span class="list-slider__old-price">$${product.discounted ? centToDollar(product.priceCents) : ''}</span>
         </div>
       </div>
     </div>
