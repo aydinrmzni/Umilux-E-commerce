@@ -1,9 +1,9 @@
 import {centToDollar} from './math.js';
 
 /* Save product item element and return the HTML */
-export const productHTML = (product, productDetails, productStarsHTML, discountPercent) => {
+export const productHTML = (productDetails, productStarsHTML, discountPercent) => {
   let sliderItemsHTML = `
-    <div class="list-slider__item ${product.discounted && 'list-slider__item--discounted'} list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
+    <div class="list-slider__item ${productDetails.product.discounted && 'list-slider__item--discounted'} list-slider__item--amazing splide__slide d-flex flex-dir-column justify-content-space-between align-items-center p-1">
       <div class="hovering-menu">
         <ul class="hovering-menu__list d-flex flex-dir-column justify-content-space-between align-content-center">
           <li class="hovering-menu__item d-flex justify-content-center align-items-center">
@@ -15,7 +15,7 @@ export const productHTML = (product, productDetails, productStarsHTML, discountP
           <li class="hovering-menu__item d-flex justify-content-center align-items-center">
             <a href="#" class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100"><i class="fa-regular fa-eye"></i></a>
           </li>
-          <li data-id="${product.id}" class="hovering-menu__item d-flex justify-content-center align-items-center add-to-cart-js">
+          <li data-id="${productDetails.product.id}" class="hovering-menu__item d-flex justify-content-center align-items-center add-to-cart-js">
             <span class="hovering-menu__link d-flex justify-content-center align-items-center w-100 h-100" style="pointer-events: none;">
               <i style="pointer-events: none;" class="fa-regular fa-square-plus"></i>
             </span>
@@ -29,11 +29,13 @@ export const productHTML = (product, productDetails, productStarsHTML, discountP
       </div>
       <div class="list-slider__details-wraper d-flex flex-dir-column justify-content-flex-start align-items-flex-start w-100">
         <a href="" class="list-slider__item-category d-block w-100">${productDetails.categories.map((categorie) => categorie.name).join(', ')}</a>
-        <h3 class="list-slider__item-title">${product.name}</h3>
+        <h3 class="list-slider__item-title">${productDetails.product.name}</h3>
         <div class="list-slider__rating">${productStarsHTML}</div>
         <div class="list-slider__price-wraper">
-          <span class="list-slider__current-price">$${product.discounted ? centToDollar(product.discountedPriceCents) : centToDollar(product.priceCents)}</span>
-          <span class="list-slider__old-price">$${product.discounted ? centToDollar(product.priceCents) : ''}</span>
+          <span class="list-slider__current-price">$
+          ${productDetails.product.discounted ? centToDollar(productDetails.product.discountedPriceCents) : centToDollar(productDetails.product.priceCents)}
+          </span>
+          <span class="list-slider__old-price">$${productDetails.product.discounted ? centToDollar(productDetails.product.priceCents) : ''}</span>
         </div>
       </div>
     </div>

@@ -93,7 +93,7 @@ const getItemsInCart = (Cart) => {
 /* Render Cart quantity */
 const renderItemsInCartPop = (itemsInCart) => {
   let cartpopItemsHTML = ''; // Store cart items HTML
-  console.log(itemsInCart);
+  
   itemsInCart.forEach((item) => {
     const itemDetails = getProductById(item.productid); // Store product details in matchingItem
     cartpopItemsHTML += `

@@ -9,6 +9,7 @@ import {productHTML} from '../utils/productHTML.js';
 import {Cart} from './cart.js';
 
 const listSliderItemsElm = document.querySelector('.js-list-slider__items');
+const topRatedListElm = document.querySelector('.js-top-rated');
 
 /* Products JSON */
 const Product = [
@@ -470,15 +471,40 @@ export const getProductById = (id) => {
   return {product: matchingProduct, categories: matchingCategories, brands: matchingBrands, images: matchingImages, reviews: matchingReviews, attributes: matchingAttributes, tags: matchingTags};
 };
 
+// return all product's details in an array
+const getAllProductsByDetails = (Product) => {
+  let productsDetail = [];
+  Product.forEach((product) => {
+    productsDetail.push(getProductById(product.id));
+  });
+  return productsDetail;
+};
+
+// return sorted product detials base on the avrage ratting for each product - if desc true it means that sorting is desc and false means its asc
+const sortItemsByReview = (desc) => {
+  let avgProductsRatting = [];
+  getAllProductsByDetails(Product).forEach((productDetails) => {
+    const itemAvgRating = getAvgRating(productDetails.reviews);
+    avgProductsRatting.push({itemAvgRating, productDetails});
+  });
+  if (desc) {
+    return avgProductsRatting.sort((a, b) => b.itemAvgRating - a.itemAvgRating).map((product) => product.productDetails);
+  } else {
+    return avgProductsRatting.sort((a, b) => a.itemAvgRating - b.itemAvgRating).map((product) => product.productDetails);
+  }
+};
+
+
 /* Display the products in Homepage */
 const renderProducts = (Product) => {
   let trendingProductsHTML = '';
-
+  let topRatedProductsHTML = '';
+  
   /* Iterate throught the Products */
   Product.forEach((product) => {
     let productStarsHTML = ''; /* Stores the product rating stars element */
     const productDetails = getProductById(product.id); /* Gets the product details */
-    const discountPercent = getDiscountPercent(product.priceCents, product.discountedPriceCents); /* Get discount percent */
+    const discountPercent = getDiscountPercent(productDetails.product.priceCents, productDetails.product.discountedPriceCents); /* Get discount percent */
     const avgRating = getAvgRating(productDetails.reviews); /* Get the avrage product rate */
 
     /* Store the fill stars icon */
@@ -492,19 +518,32 @@ const renderProducts = (Product) => {
     }
 
     /* Saves the product if its trending */
-    product.trending && (trendingProductsHTML += productHTML(product, productDetails, productStarsHTML, discountPercent));
+    product.trending && (trendingProductsHTML += productHTML(productDetails, productStarsHTML, discountPercent));
+  });
+
+  sortItemsByReview(true).forEach((productDetail) => {
+    let productStarsHTML = ''; /* Stores the product rating stars element */
+    const discountPercent = getDiscountPercent(productDetail.product.priceCents, productDetail.product.discountedPriceCents); /* Get discount percent */
+    const avgRating = getAvgRating(productDetail.reviews); /* Get the avrage product rate */
+
+    /* Store the fill stars icon */
+    for (let i = 0; i < avgRating; i++) {
+      productStarsHTML += '<i class="list-slider__star fa-solid fa-star list-slider__star--fill"></i>';
+    }
+
+    /* Store the empty stars icon */
+    for (let i = 0; i < 5 - avgRating; i++) {
+      productStarsHTML += '<i class="list-slider__star fa-solid fa-star"></i>';
+    }
+
+    /* Saves the product */
+    topRatedProductsHTML += productHTML(productDetail, productStarsHTML, discountPercent);
   });
 
   /* Display the trending products */
   listSliderItemsElm.innerHTML = trendingProductsHTML;
+  topRatedListElm.innerHTML = topRatedProductsHTML;
 };
 
 /* display products on load */
 renderProducts(Product);
-
-// addToCartElm &&
-//   addToCartElm.forEach((elm) => {
-//     elm.addEventListener('click', (e) => {
-
-//     });
-//   });
